@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import projectService from './services/projectService';
 import logo from './logo.svg';
-import './App.css';
+import './scss/app.scss';
 
 function App() {
   const [projects, setprojects] = useState(null);
@@ -43,11 +43,11 @@ function App() {
           Learn React
         </a>
         <ul className="list">
-        {(projects && projects.length > 0) ? (
-          projects.map(project => renderProject(project))
-        ) : (
-          <p>No project found</p>
-        )}
+          {(projects && projects.length > 0) ? (
+            projects.map(project => renderProject(project))
+          ) : (
+            <p>No project found</p>
+          )}
       </ul>
       </header>
     </div>

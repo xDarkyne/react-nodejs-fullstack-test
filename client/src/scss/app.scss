@@ -28,6 +28,13 @@
   color: #61dafb;
 }
 
+.list__item {
+
+  .App-link {
+    color: pink;
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
