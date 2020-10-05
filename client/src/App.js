@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import projectService from './services/projectService';
-import logo from './logo.svg';
 import './scss/app.scss';
 
 function App() {
@@ -30,26 +29,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <ul className="list">
+        <h1 className="App-Title">Discover my projects</h1>
+      </header>
+      <ul className="list">
           {(projects && projects.length > 0) ? (
             projects.map(project => renderProject(project))
           ) : (
             <p>No project found</p>
           )}
       </ul>
-      </header>
     </div>
   );
 }
