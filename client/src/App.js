@@ -12,6 +12,10 @@ import Downloads from './Downloads';
 function App() {
   const [count, setCount] = useState(0);
   /*
+  
+  Code below is commented out because the database
+  is not available from my remote workplace.
+
   const [projects, setprojects] = useState(null);
 
   useEffect(() => {
@@ -35,10 +39,15 @@ function App() {
     );
   };*/
 
+
+  /*
+    Renders navbar first with NavLinks to different components
+    then renders the main contents of this component (contents should
+      probably be transfered to a seperate component). 
+   */
   return (
     <Router>
-      <div>
-        <nav className="PrimaryNav">
+      <nav className="PrimaryNav">
           <ul>
             <li>
               <NavLink to="/" activeClassName="activeNav" exact>Home</NavLink>
@@ -47,7 +56,7 @@ function App() {
               <NavLink to="/about" activeClassName="activeNav" exact>About</NavLink>
             </li>
             <li>
-              <NavLink to="/downloads" activeClassName="activeNav" exact>Downloads</NavLink>
+              <NavLink to='/downloads' activeClassName="activeNav">Downloads</NavLink>
             </li>
           </ul>
         </nav>
@@ -91,54 +100,12 @@ function App() {
             </div>
           </Route>
 
-          <Route path='/downloads' exact>
-            <Router>
-              <div>
-                <nav className="SecondaryNav">
-                  <ul>
-                    <li>
-                      <NavLink to='/downloads' activeClassName="activeNav" exact>Overview</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to='/downloads/file' activeClassName="activeNav" exact>File 1</NavLink>
-                    </li>
-                    <li>
-                      <NavLink to='/downloads/zip' activeClassName="activeNav" exact>Zip</NavLink>
-                    </li>
-                  </ul>
-                </nav>
-
-                <Switch>
-                  <Route path='/downloads' exact>
-                    <Downloads />
-                    <div className="App">
-                      <header className="App-header">
-                        <h1>Overview</h1>
-                      </header>
-                    </div>
-                  </Route>
-
-                  <Route path='/downloads/file' exact>
-                    <div className="App">
-                      <header className="App-header">
-                        <h1>File 1</h1>
-                      </header>
-                    </div>
-                  </Route>
-
-                  <Route path='/downloads/zip' exact>
-                    <div className="App">
-                      <header className="App-header">
-                        <h1>Zip Archive</h1>
-                      </header>
-                    </div>
-                  </Route>
-                </Switch>
-              </div>
-            </Router>
-          </Route>
+          {/* Add sub-routes (e.g. /downloads/file1 or /about/cookies) here below the main route
+              add then the navlink within the main component in this case Downloads.js 
+              main route should not be 'exact' but sub routes should be. */}
+          <Route path='/downloads' component={ Downloads } />
+          <Route path='/downloads/zips' exact component= {Downloads} />
         </Switch>
-      </div>
     </Router>
   );
 }

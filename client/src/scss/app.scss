@@ -45,7 +45,6 @@
 }
 
 .PrimaryNav, .SecondaryNav {
-  position: fixed;
   left: 0;
   right: 0;
   margin: 0;
@@ -79,6 +78,7 @@
 }
 
 .PrimaryNav {
+  position: fixed;
   top: 0;
   background: #212121;
   border-bottom: 1px solid gray;
@@ -99,6 +99,7 @@
 }
 
 .SecondaryNav {
+  position: fixed;
   background: #fafafa;
   top: 66px;
   height: 33px;
@@ -109,5 +110,18 @@
 
   .activeNav {
     color: red;
+  }
+}
+
+code {
+  display: inline-block;
+  width: 90%;
+  margin: 10px auto;
+  background: #dfdfdf;
+  border-radius: 4px;
+  padding: 10px;
+
+  .npm-pack {
+    color: #52b96c;
   }
 }
