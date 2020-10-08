@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 // Routes
-require("./routes/project.routes.js")(app);
+// require("./routes/project.routes.js")(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
