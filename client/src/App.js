@@ -1,4 +1,10 @@
 import React, { useState, useEffect } from 'react';
+/*  BrowserRouter, NavLink, Route and Switch from react-router-dom
+    are the most basic tools to use react-router effectively
+    Link can be used instead of NavLink but Link does not support a
+    activeClassName attribute which sets styling if this path is active
+    e.g in a navbar with the elements home, shop and about shop can be
+    set to a red color while we are in the shop path or sub-paths */
 import {BrowserRouter as Router,
   NavLink,
   Route,
@@ -8,6 +14,7 @@ import logo from './logo.svg';
 import './scss/app.scss';
 
 import Downloads from './Downloads';
+import Zips from './Zips';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -37,7 +44,7 @@ function App() {
         <a className="App-link" href={project.github}>Link</a>
       </li>
     );
-  };*/
+  };  */
 
 
   /*
@@ -50,10 +57,11 @@ function App() {
       <nav className="PrimaryNav">
           <ul>
             <li>
-              <NavLink to="/" activeClassName="activeNav" exact>Home</NavLink>
+              {/* root path (to='/') should be exact. */}
+              <NavLink exact to="/" activeClassName="activeNav">Home</NavLink>
             </li>
             <li>
-              <NavLink to="/about" activeClassName="activeNav" exact>About</NavLink>
+              <NavLink to="/about" activeClassName="activeNav">About</NavLink>
             </li>
             <li>
               <NavLink to='/downloads' activeClassName="activeNav">Downloads</NavLink>
@@ -92,7 +100,8 @@ function App() {
             </div>
           </Route>
 
-          <Route path='/about' exact>
+          {/* Paths that aren't the root path ( domain.com/ ) should not be exact */}
+          <Route path='/about'>
             <div className="App">
               <header className="App-header">
                 <h1>About</h1>  
@@ -100,11 +109,9 @@ function App() {
             </div>
           </Route>
 
-          {/* Add sub-routes (e.g. /downloads/file1 or /about/cookies) here below the main route
-              add then the navlink within the main component in this case Downloads.js 
-              main route should not be 'exact' but sub routes should be. */}
+          {/* Pages should be contained within their own component (component.js file) to simplify
+              Route definitions. See the line below for a simple Route */}
           <Route path='/downloads' component={ Downloads } />
-          <Route path='/downloads/zips' exact component= {Downloads} />
         </Switch>
     </Router>
   );
