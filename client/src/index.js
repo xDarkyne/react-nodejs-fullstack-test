@@ -1,12 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './scss/index.scss';
-import App from './App';
+import {BrowserRouter as Router,
+Switch,
+Route,
+Link,
+NavLink,
+Redirect,
+useHistory,
+useLocation } from 'react-router-dom';
+import './scss/main.scss';
+import App from './components/App';
+import About from './components/About';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Router>
+        <div>
+          <nav className="main-nav">
+            <ul>
+              <li>
+                <NavLink activeClassName="active" exact to="/">Home</NavLink>
+              </li>
+              
+              <li>
+                <NavLink activeClassName="active" to="/about">About</NavLink>
+              </li>
+            </ul>
+          </nav>
+
+          <Switch>
+            <Route path="/about">
+              <About />
+            </Route>
+
+            <Route exact path="/">
+              <App />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
